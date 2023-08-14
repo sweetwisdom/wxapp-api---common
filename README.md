@@ -28,11 +28,11 @@
 
 这里创建了创建三个数据集合：`orderList（订单）`,`member（会员人员）`,`goodsList（会员价格表）`
 
-### 会员信息表(需要使用云数据库，初始化数据)
+**member 表字段如下**
 
-```json
-[{ "filed": "uid", "title": "uid" }, { "filed": "name", "title": "姓名" }, { "filed": "sex" }, { "filed": "phone", "title": "性别" }, { "filed": "type", "title": "手机号码" }, { "filed": "wechatNumber", "title": "会员类型" }, { "filed": "adress", "title": "微信号" }, { "filed": "startTime", "title": "地址" }, { "filed": "endTime", "title": "过期时间" }, { "filed": "price", "title": "支付价格" }, { "filed": "orderNumber", "title": "订单号" }]
-```
+| uid  | 姓名 | 性别 | 手机号码 | 会员类型 | 微信号       | 地址   | 过期时间  | 支付价格 | 价格  | 订单号      |
+| ---- | ---- | ---- | -------- | -------- | ------------ | ------ | --------- | -------- | ----- | ----------- |
+| uid  | name | sex  | phone    | type     | wechatNumber | adress | startTime | endTime  | price | orderNumber |
 
 ## 接口设计
 
@@ -367,19 +367,7 @@ async exportExcel(ctx, next) {
       let { uid, name, sex, phone, type, wechatNumber, adress, startTime, endTime, price, orderNumber } = sample;
       data1.push([uid, name, sex, phone, type, wechatNumber, adress, startTime, endTime, price, orderNumber]);
     }
-    letasx = [
-      { filed: "uid", title: "uid", },
-      { filed: "name", title: "姓名", },
-      { filed: "sex", },
-      { filed: "phone", title: "性别", },
-      { filed: "type", title: "手机号码", },
-      { filed: "wechatNumber", title: "会员类型", },
-      { filed: "adress", title: "微信号", },
-      { filed: "startTime", title: "地址", },
-      { filed: "endTime", title: "过期时间", },
-      { filed: "price", title: "支付价格", },
-      { filed: "orderNumber", title: "订单号", },
-    ];
+
     //    daoc
     let sheetName = "member/" + new Date().getTime() + ".xlsx";
     const options = {
